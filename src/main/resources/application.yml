@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      database: blog
+      password: root
+      username: root
+      authentication-database: admin
