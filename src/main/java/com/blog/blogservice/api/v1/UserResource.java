@@ -10,8 +10,11 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @RestController
@@ -22,6 +25,7 @@ public class UserResource {
     private final UserMapper userMapper;
 
     @PostMapping
+    @Secured("hasRole('ROLE_ADMIN')")
     public UserResponse save(@RequestBody @Valid UserRequest userRequest) {
         User save = userService.save(userMapper.userRequestToUser(userRequest));
         return userMapper.userToUserResponse(save);

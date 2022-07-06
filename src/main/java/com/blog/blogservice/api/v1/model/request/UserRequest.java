@@ -15,13 +15,9 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 public class UserRequest {
     @NotEmpty(message = "O campo é obrigatório")
-    @Min(2)
     private String name;
     @NotEmpty(message = "O campo é obrigatório")
-    @Min(6)
-    @Max(15)
     private String password;
     @NotEmpty(message = "O campo é obrigatório")
-    @Email
     private String email;
 }
